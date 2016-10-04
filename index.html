@@ -28,15 +28,17 @@
 
               <script>
                   require([
-                      'demo/myModule'
+                      'demo/myModule',
+                      'dojo/domReady!'
                   ], function (myModule) {
                       myModule.setText('greeting', 'Hello Dojo!');
 
-                      setTimeout(function () {
+                      var myLocalFunc = function () {
                           myModule.restoreText('greeting');
-                      }, 3000);
+                      };
+
+                      setTimeout(myLocalFunc, 3000);
                   });
               </script>
-      </script>
   </body>
 </html>
