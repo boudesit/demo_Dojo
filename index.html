@@ -71,6 +71,22 @@
                   });
               </script>
 
+              <script>
+          			// load our custom/Hello module and wait for the DOM to be ready
+          			require([ "custom/Hello", "dojo/domReady!" ], function(Hello){
+          				// create our custom dialog
+          				var w = new Hello({
+          					id: "hello",
+          					content: "Hello World!"
+
+          				// place it in the DOM
+          				}).placeAt(document.body);
+
+          				// show it
+          				w.show();
+          			});
+          		</script>
+
 
               <script>
                // Require the registry, parser, Dialog, and wait for domReady
