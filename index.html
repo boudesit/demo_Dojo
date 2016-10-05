@@ -78,6 +78,7 @@
           			// load our custom/Hello module and wait for the DOM to be ready
           			require([ "custom/Hello", "dojo/domReady!" ], function(Hello){
           				// create our custom dialog
+                  console.log("suis-je ici ? ");
           				var w = new Hello({
           					id: "hello",
           					content: "Hello World!"
