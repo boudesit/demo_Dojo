@@ -1,59 +1,30 @@
-<!DOCTYPE HTML>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>Demo: data-dojo-config</title>
-		<link rel="stylesheet" href="../../_common/demo.css" media="screen" type="text/css">
-		<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dijit/themes/claro/claro.css" media="screen">
-		<style>
-			#dialog { min-width: 200px; }
-		</style>
-	</head>
-	<body class="claro">
-		<h1>Demo: data-dojo-config</h1>
-		<div id="dialog" data-dojo-type="dijit/Dialog" data-dojo-props="title: 'data-dojo-config / dojo.config'"></div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Demo</title>
+    </head>
+    <body>
+      <script data-dojo-config="async: 1, dojoBlankHtmlUrl: '/blank.html',
+              packages: [ {
+                  name: 'custom',
+                  location: location.pathname.replace(/\/[^/]+$/, '') + '/js/custom'
+              } ]"
+          src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"></script>
 
-    <!-- Configure Dojo first -->
-    <script>
-        dojoConfig = {
-            has: {
-                "dojo-firebug": true,
-                "dojo-debug-messages": true
-            },
-            // Don't attempt to parse the page for widgets
-            parseOnLoad: false,
-            packages: [
-                // Any references to a "demo" resource should load modules locally, *not* from CDN
-                {
-                    name: "demo",
-                    location: "/documentation/tutorials/1.10/dojo_config/demo"
-                }
-            ],
-            // Timeout after 10 seconds
-            waitSeconds: 10,
-            map: {
-                // Instead of having to type "dojo/domReady!", we just want "ready!" instead
-                "*": {
-                    ready: "dojo/domReady"
-                }
-            },
-            // Get "fresh" resources
-            cacheBust: true
-        };
-    </script>
+          <script>
+      			// load our custom/Hello module and wait for the DOM to be ready
+      			require([ "custom/Hello", "dojo/domReady!" ], function(Hello){
+      				// create our custom dialog
+      				var w = new Hello({
+      					id: "hello",
+      					content: "Hello World!"
 
-    <!-- Load Dojo, Dijit, and DojoX resources from Google CDN -->
-    <script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"></script>
+      				// place it in the DOM
+      				}).placeAt(document.body);
 
-    <!-- Load a "demo" module -->
-
-    <script>
-        require(["demo/AuthoredDialog", "dojo/parser", "ready!"], function(AuthoredDialog, parser) {
-            // Parse the page
-            parser.parse();
-
-            // Do something with demo/AuthoredDialog...
-        });
-    </script>
-	</body>
+      				// show it
+      				w.show();
+      			});
+      		</script>          
+    </body>
 </html>
