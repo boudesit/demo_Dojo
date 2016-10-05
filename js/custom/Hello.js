@@ -3,8 +3,6 @@ define([ "dojo/_base/declare", "dijit/Dialog", "custom/customButton" ], function
 //  declare our custom class
 
 var b = new customButton(
-
-    label: "Click me!",
     onClick: function(){
         // Do something:
         dom.byId("greeting").innerHTML += " Thank you! ";
