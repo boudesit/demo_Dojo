@@ -19,6 +19,8 @@
           // This code registers the correct location of the "demo"
           // package so we can load Dojo from the CDN whilst still
           // being able to load local modules
+          dojoBlankHtmlUrl: location.pathname.replace(/\/[^/]+$/, '') + '/blank.html',
+
           packages: [{
               name: "custom",
               location: location.pathname.replace(/\/[^/]*$/, '') + '/js/custom'
