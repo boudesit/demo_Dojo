@@ -15,18 +15,14 @@
               // package so we can load Dojo from the CDN whilst still
               // being able to load local modules
               packages: [{
-                  name: "demo",
-                  location: location.pathname.replace(/\/[^/]*$/, '') + '/demo'
-              }]
+                          name: 'custom',
+                          location: location.pathname.replace(/\/[^/]+$/, '') + '/js/custom'
+                        }]
           };
       </script>
 
       <!-- , dojoBlankHtmlUrl: '/blank.html' -->
-      <script data-dojo-config="async: 1,
-              packages: [ {
-                  name: 'custom',
-                  location: location.pathname.replace(/\/[^/]+$/, '') + '/js/custom'
-              } ]"
+      <script data-dojo-config="async: 1"
           src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"></script>
 
           <script>
