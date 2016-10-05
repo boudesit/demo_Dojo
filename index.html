@@ -13,31 +13,47 @@
 		<h1>Demo: data-dojo-config</h1>
 		<div id="dialog" data-dojo-type="dijit/Dialog" data-dojo-props="title: 'data-dojo-config / dojo.config'"></div>
 
+    <!-- Configure Dojo first -->
     <script>
         dojoConfig = {
             has: {
-                "dojo-amd-factory-scan": false
-            }
+                "dojo-firebug": true,
+                "dojo-debug-messages": true
+            },
+            // Don't attempt to parse the page for widgets
+            parseOnLoad: false,
+            packages: [
+                // Any references to a "demo" resource should load modules locally, *not* from CDN
+                {
+                    name: "demo",
+                    location: "/documentation/tutorials/1.10/dojo_config/demo"
+                }
+            ],
+            // Timeout after 10 seconds
+            waitSeconds: 10,
+            map: {
+                // Instead of having to type "dojo/domReady!", we just want "ready!" instead
+                "*": {
+                    ready: "dojo/domReady"
+                }
+            },
+            // Get "fresh" resources
+            cacheBust: true
         };
     </script>
 
-    <script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"
-                    data-dojo-config="isDebug: 1, async: 1, parseOnLoad: 1"></script>
+    <!-- Load Dojo, Dijit, and DojoX resources from Google CDN -->
+    <script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"></script>
 
-
+    <!-- Load a "demo" module -->
 
     <script>
-			// Require the registry, parser, Dialog, and wait for domReady
-			require(["dijit/registry", "dojo/parser", "dojo/json", "dojo/_base/config", "dijit/Dialog", "dojo/domReady!"]
-			, function(registry, parser, JSON, config) {
-				parser.parse();
-				// Find the dialog
-				var dialog = registry.byId("dialog");
-				// Set the content equal to what dojo/_base/config is
-				dialog.set("content", '<pre>' + JSON.stringify(config, null, '\t') + '</pre>');
-				// Show the dialog
-				dialog.show();
-			});
-		</script>
+        require(["demo/AuthoredDialog", "dojo/parser", "ready!"], function(AuthoredDialog, parser) {
+            // Parse the page
+            parser.parse();
+
+            // Do something with demo/AuthoredDialog...
+        });
+    </script>
 	</body>
 </html>
