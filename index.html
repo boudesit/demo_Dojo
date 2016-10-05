@@ -77,23 +77,17 @@
               </script>
 
               <script>
-          			// load our custom/Hello module and wait for the DOM to be ready
-                console.log("suis-je ici ? ");
-
-          			require([ "custom/Hello", "dojo/domReady!" ], function(Hello){
-          				// create our custom dialog
-                  console.log("suis-je ici ? ");
-
-          				var w = new Hello({
-          					id: "hello",
+          			// indicate we want custom.Hello to be loaded
+          			dojo.require("custom.Hello");
+          			// wait for everything to load
+          			dojo.ready(function(){
+          				// now we have everything loaded and we are ready to go
+          				// let's instantiate a Hello World Dialog from our class:
+          				customWidget = new custom.Hello({
           					content: "Hello World!"
-
-          				// place it in the DOM
-          				}).placeAt(document.body);
-                  console.log("suis-je ici ? ");
-
-          				// show it
-          				w.show();
+          				}, "hello");
+          				// and show it
+          				customWidget.show();
           			});
           		</script>
 
