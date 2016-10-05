@@ -79,12 +79,12 @@
               <script>
           			// load our custom/Hello module and wait for the DOM to be ready
                 console.log("suis-je ici ? ");
-
+                var w;
           			require([ "custom/Hello", "dojo/domReady!" ], function(Hello){
           				// create our custom dialog
                   console.log("suis-je ici ? ");
 
-          				var w = new Hello({
+          				this.w = new Hello({
           					id: "hello",
           					content: "Hello World!",
                     style: "width: 300px"
@@ -94,8 +94,10 @@
                   console.log("suis-je ici ? ");
 
           				// show it
-          				w.show();
+          				this.w.show();
           			});
+
+                console.log(w);
           		</script>
 
 
