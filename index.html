@@ -22,8 +22,8 @@
           dojoBlankHtmlUrl: location.pathname.replace(/\/[^/]+$/, '') + '/blank.html',
 
           packages: [{
-              name: "demo",
-              location: location.pathname.replace(/\/[^/]*$/, '') + '/demo'
+              name: "custom",
+              location: location.pathname.replace(/\/[^/]*$/, '') + '/js/custom'
           }]
       };
     </script>
@@ -80,15 +80,21 @@
           			// load our custom/Hello module and wait for the DOM to be ready
                 console.log("suis-je ici ? ");
 
-                require(['demo/myModule','dojo/domReady!'], function (myModule) {
-                    myModule.setText('greeting', 'Hello Dojo!');
+          			require([ "custom/Hello", "dojo/domReady!" ], function(Hello){
+          				// create our custom dialog
+                  console.log("suis-je ici ? ");
 
-                    var myLocalFunc = function () {
-                        myModule.restoreText('greeting');
-                    };
+          				var w = new Hello({
+          					id: "hello",
+          					content: "Hello World!"
 
-                    setTimeout(myLocalFunc, 3000);
-                });
+          				// place it in the DOM
+          				}).placeAt(document.body);
+                  console.log("suis-je ici ? ");
+
+          				// show it
+          				w.show();
+          			});
           		</script>
 
 
