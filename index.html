@@ -10,24 +10,6 @@
   <body class="claro">
       <h1 id="greeting">Hello</h1>
 
-
-    <script>
-
-        // Require the DOM resource
-        require(["dojo/dom", "dojo/domReady!"], function(dom) {
-
-            function setText(node, text){
-                node = dom.byId(node);
-                node.innerHTML = text;
-            }
-
-            setText("one", "One has been set");
-            setText("two", "Two has been set as well");
-
-        });
-
-    </script>
-
       <ul id="list">
         <li id="one">One</li>
         <li id="two">Two</li>
@@ -67,6 +49,23 @@
                     foo: "bar",
                     async: true
                 };
+            </script>
+
+            <script>
+
+                // Require the DOM resource
+                require(["dojo/dom", "dojo/domReady!"], function(dom) {
+
+                    function setText(node, text){
+                        node = dom.byId(node);
+                        node.innerHTML = text;
+                    }
+
+                    setText("one", "One has been set");
+                    setText("two", "Two has been set as well");
+
+                });
+
             </script>
 
               <!-- <script>
