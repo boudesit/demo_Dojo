@@ -126,7 +126,7 @@
                         on(dom.byId("moveAfterFour"), "click", moveAfterFour);
                         on(dom.byId("moveLast"), "click", moveLast);
                 });
-                
+
             </script>
 
               <!-- <script>
@@ -162,7 +162,7 @@
                   });
               </script>
 
-              <script>
+              <!-- <script>
           			load our custom/Hello module and wait for the DOM to be ready
                 console.log("suis-je ici ? ");
                 var w;
@@ -181,7 +181,31 @@
 
           				// show it
           				this.w.show();
-          			});
+          			}); -->
+
+                <script>
+            			require(["dojo/dom", "dojo/on", "dojo/request", "dojo/domReady!"],
+            				function(dom, on, request){
+            					// Results will be displayed in resultDiv
+            					var resultDiv = dom.byId("resultDiv");
+
+            					// Attach the onclick event handler to the textButton
+            					on(dom.byId('textButton'), "click", function(evt){
+            						// Request the text file
+            						request.get("../resources/text/psalm_of_life.txt").then(
+            							function(response){
+            								// Display the text file content
+            								resultDiv.innerHTML = "<pre>" + response + "</pre>";
+            							},
+            							function(error){
+            								// Display the error returned
+            								resultDiv.innerHTML = "<div class=\"error\">" + error + "<div>";
+            							}
+            						);
+            					});
+            				}
+            			);
+            		</script>
 
 
                 // // indicate we want custom.Hello to be loaded
@@ -196,7 +220,6 @@
                 // // and show it
                 // customWidget.show();
 
-          		</script>
 
 
               <script>
