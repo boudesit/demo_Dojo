@@ -143,9 +143,10 @@
                       setTimeout(myLocalFunc, 3000);
                   });
               </script> -->
+              <div id="resultDiv">
 
 
-              <script>
+              <!-- <script>
                   require([
                       'dojo/dom',
                       'dojo/fx',
@@ -160,7 +161,7 @@
                         left: 200
                       }).play();
                   });
-              </script>
+              </script> -->
 
               <!-- <script>
           			load our custom/Hello module and wait for the DOM to be ready
@@ -187,18 +188,22 @@
             			require(["dojo/dom", "dojo/on", "dojo/request", "dojo/domReady!"],
             				function(dom, on, request){
             					// Results will be displayed in resultDiv
+                      console.log("je sais pas ou j'suis !!");
             					var resultDiv = dom.byId("resultDiv");
-
+                      console.log("je sais pas ou j'suis !!!");
             					// Attach the onclick event handler to the textButton
             					on(dom.byId('textButton'), "click", function(evt){
             						// Request the text file
+                        console.log("je sais pas ou j'suis !!!!");
             						request.get("../resources/text/psalm_of_life.txt").then(
             							function(response){
             								// Display the text file content
+                            console.log("je sais pas ou j'suis !!!!!");
             								resultDiv.innerHTML = "<pre>" + response + "</pre>";
             							},
             							function(error){
             								// Display the error returned
+                            console.log("je sais pas ou j'suis !!!!!!");
             								resultDiv.innerHTML = "<div class=\"error\">" + error + "<div>";
             							}
             						);
@@ -208,7 +213,7 @@
             		</script>
 
 
-                // // indicate we want custom.Hello to be loaded
+                <!-- // // indicate we want custom.Hello to be loaded
                 // dojo.require("custom.Hello");
                 // // wait for everything to load
                 // dojo.ready(function(){
@@ -218,11 +223,11 @@
                 // content: "Hello World!"
                 // }, "hello"); // make sure you have an element with the id of "hello"
                 // // and show it
-                // customWidget.show();
+                // customWidget.show(); -->
 
 
 
-              <script>
+              <!-- <script>
                // Require the registry, parser, Dialog, and wait for domReady
                require(["dijit/registry", "dojo/parser", "dojo/json", "dojo/_base/config", "dijit/Dialog", "dojo/domReady!"]
                , function(registry, parser, JSON, config) {
@@ -235,10 +240,10 @@
                    // Show the dialog
                    dialog.show();
                });
-               </script>
+               </script> -->
 
                <!-- and later in the page -->
                <div id="dialog" data-dojo-type="dijit/Dialog" data-dojo-props="title: 'dojoConfig / dojo/_base/config'"></div>
-               <div id="hello"></div>
+               <!-- <div id="hello"></div> -->
   </body>
 </html>
