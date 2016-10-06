@@ -200,7 +200,8 @@
             					on(dom.byId('textButton'), "click", function(evt){
             						// Request the text file
                         console.log("je sais pas ou j'suis !!!!");
-            						request.get("/ressources/text/psalm_of_life.txt").then(
+                        var text = location.pathname.replace(/\/[^/]*$/, '') + "/ressources/text/psalm_of_life.txt";
+            						request.get(text).then(
             							function(response){
             								// Display the text file content
                             console.log("je sais pas ou j'suis !!!!!");
