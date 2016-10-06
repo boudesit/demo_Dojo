@@ -78,25 +78,37 @@
 
               <script>
           			// load our custom/Hello module and wait for the DOM to be ready
-                console.log("suis-je ici ? ");
-                var w;
-          			require([ "custom/Hello", "dojo/domReady!" ], function(Hello){
-          				// create our custom dialog
-                  console.log("suis-je ici ? ");
+                // console.log("suis-je ici ? ");
+                // var w;
+          			// require([ "custom/Hello", "dojo/domReady!" ], function(Hello){
+          			// 	// create our custom dialog
+                //   console.log("suis-je ici ? ");
+                //
+          			// 	this.w = new Hello({
+          			// 		id: "hello",
+          			// 		content: "Hello World!",
+                //     style: "width: 300px"
+                //
+          			// 	// place it in the DOM
+          			// 	}).placeAt(document.body);
+                //   console.log("suis-je ici ? ");
+                //
+          			// 	// show it
+          			// 	this.w.show();
+          			// });
 
-          				this.w = new Hello({
-          					id: "hello",
-          					content: "Hello World!",
-                    style: "width: 300px"
 
-          				// place it in the DOM
-          				}).placeAt(document.body);
-                  console.log("suis-je ici ? ");
-
-          				// show it
-          				this.w.show();
-          			});
-
+                // indicate we want custom.Hello to be loaded
+                dojo.require("custom.Hello");
+                // wait for everything to load
+                dojo.ready(function(){
+                // now we have everything loaded and we are ready to go
+                // let's instantiate a Hello World Dialog from our class:
+                customWidget = new custom.Hello({
+                content: "Hello World!"
+                }, "hello"); // make sure you have an element with the id of "hello"
+                // and show it
+                customWidget.show();
 
           		</script>
 
@@ -118,5 +130,6 @@
 
                <!-- and later in the page -->
                <div id="dialog" data-dojo-type="dijit/Dialog" data-dojo-props="title: 'dojoConfig / dojo/_base/config'"></div>
+               <div id="hello"></div>
   </body>
 </html>
