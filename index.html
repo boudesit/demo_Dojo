@@ -202,15 +202,15 @@
                         console.log("je sais pas ou j'suis !!!!");
                         var text = location.pathname.replace(/\/[^/]*$/, '') + "/ressources/text/psalm_of_life.txt";
             						request.get(text).then(
+            							function(error){
+            								// Display the error returned
+                            console.log("je sais pas ou j'suis !!!!!!");
+            								resultDiv.innerHTML = "<div class=\"error\">" + error + "<div>";
+            							},
                           function(response){
                             // Display the text file content
                             console.log("je sais pas ou j'suis !!!!!");
                             resultDiv.innerHTML = "<pre>" + response + "</pre>";
-                          },
-                          function(error){
-                            // Display the error returned
-                            console.log("je sais pas ou j'suis !!!!!!");
-                            resultDiv.innerHTML = "<div class=\"error\">" + error + "<div>";
                           }
             						);
             					});
